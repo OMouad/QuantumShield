@@ -1,0 +1,23 @@
+# VCS
+.git
+.gitignore
+
+# CI config (not needed for image build)
+.github/
+
+# IDE/editor
+.idea/
+.vscode/
+*.iml
+
+# Build outputs
+**/target/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Maven wrapper + cache not required inside builder
+mvnw
+mvnw.cmd
+.mvn/
