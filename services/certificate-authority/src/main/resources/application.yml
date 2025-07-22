@@ -1,0 +1,56 @@
+# ==================================================================================
+# QuantumShield Certificate Authority - Core Configuration
+# ==================================================================================
+# This is the main configuration file that includes modular configuration files
+# for better organization and maintainability.
+#
+# Configuration is split by concern:
+# - database: All database and JPA related settings
+# - pki: PKI business logic and certificate authority settings  
+# - security: Authentication and authorization settings
+# - infrastructure: Server, caching, and infrastructure settings
+# - observability: Logging, monitoring, and observability settings
+# - external: External service configurations
+# ==================================================================================
+
+spring:
+  application:
+    name: quantumshield-certificate-authority
+    
+  # Profile-based configuration activation
+  profiles:
+    # Default profile - can be overridden via SPRING_PROFILES_ACTIVE
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+    
+    # Include modular configuration files
+    include:
+      - database
+      - pki
+      - security
+      - infrastructure
+      - observability
+      - external
+
+# =================================================================
+# ENVIRONMENT-SPECIFIC PROFILES
+# =================================================================
+---
+# Development Profile
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+---
+# Production Profile  
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+---
+# Test Profile
+spring:
+  config:
+    activate:
+      on-profile: test
